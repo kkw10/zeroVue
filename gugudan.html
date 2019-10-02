@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gugudan</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>
+            <!-- 중괄호 안에서는 자바스크립트 문법을 사용할 수 있고, 입력된 값들은 최종적으로 문자열로 변환되서 출력된다. -->
+            {{ firstNumb }} 곱하기 {{ secondNumb }} 는? 
+        </div>
+        <form>
+            <input type="number" v-model="inputValue">
+            <button>입력</button>
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el: "#root",
+        data: {
+            firstNumb: Math.ceil(Math.random() * 9),
+            secondNumb: Math.ceil(Math.random() * 9),
+            inputValue: '',
+            result: '',
+        },
+        methods: {}
+    })
+</script>
+</html>
