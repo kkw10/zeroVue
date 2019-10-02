@@ -13,23 +13,43 @@
             <!-- 중괄호 안에서는 자바스크립트 문법을 사용할 수 있고, 입력된 값들은 최종적으로 문자열로 변환되서 출력된다. -->
             {{ firstNumb }} 곱하기 {{ secondNumb }} 는? 
         </div>
-        <form>
-            <input type="number" v-model="inputValue">
+        <form v-on:submit="onSubmitForm">
+            <input type="number" v-model="inputValue" ref="answer">
             <button>입력</button>
         </form>
-        <div id="result"></div>
+        <div id="result">
+            {{ result }}
+        </div>
     </div>
 </body>
 <script>
     const app = new Vue({
         el: "#root",
+
         data: {
             firstNumb: Math.ceil(Math.random() * 9),
             secondNumb: Math.ceil(Math.random() * 9),
             inputValue: '',
             result: '',
         },
-        methods: {}
+
+        methods: {
+            onSubmitForm(e) {
+                e.preventDefault();
+
+                if(this.firstNumb * this.secondNumb === parseInt(this.inputValue)) {
+                    this.result = '정답';
+                    this.firstNumb = Math.ceil(Math.random() * 9);
+                    this.secondNumb = Math.ceil(Math.random() * 9);
+
+                } else {
+                    this.result = '땡';
+                }
+
+                this.inputValue = '';
+                this.$refs.answer.focus();
+            }
+        }
     })
 </script>
 </html>
