@@ -9,26 +9,38 @@
 </head>
 <body>
     <div id="root">
-        <div>
-            {{ word }}
-        </div>
-        <form v-on:submit="onSubmitForm">
-            <input type="text" v-model="value" ref="answer">
-            <button type="submit">입력!</button>
-        </form>
-        <div id="result">
-            {{ result  }}
-        </div>
+        <word-relay start-word="사과"></word-relay>
+        <word-relay start-word="딸기"></word-relay>
+        <word-relay start-word="포토"></word-relay>
     </div>
 </body>
 <script>
-    const app = new Vue({
-        el: '#root',
+    Vue.component('wordRelay', { // 전역 컴포넌트 
+        template: `
+            <div>
+                <div>
+                    {{ word }}
+                </div>
+                <form v-on:submit="onSubmitForm">
+                    <input type="text" v-model="value" ref="answer">
+                    <button type="submit">입력!</button>
+                </form>
+                <div id="result">
+                    {{ result  }}
+                </div>            
+            </div>
+        `,
 
-        data: {
-            word: '자동차',
-            result: '',
-            value: ''
+        props: [
+            'startWord'
+        ],
+
+        data() {
+            return {
+                word: this.startWord,
+                result: '',
+                value: ''                
+            }
         },
 
         methods: {
@@ -46,6 +58,11 @@
                 this.$refs.answer.focus();
             }
         }
+    })
+</script>
+<script>
+    const app = new Vue({
+        el: '#root'
     })
 </script>
 </html>
