@@ -1,0 +1,28 @@
+{
+  "name": "zero-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkw10/zeroVue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkw10/zeroVue/issues"
+  },
+  "homepage": "https://github.com/kkw10/zeroVue#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
